@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+            <style>h1 {
+                
+                color: black;
+                text-align: center;
+            }
+                input[type=text] {
+                
+                border-bottom: 2px solid rgb(8, 5, 5);
+                
+                color:black;
+                
+                }  
+                input[type=button]{
+                    color: black;
+                    background-color:blue;
+
+                }               
+                
+                
+                
+                table {
+  font-family: arial, sans-serif;
+  
+  border-width: 2px;
+  border-color: black;
+  border-radius: 2px;
+  width: 100%;
+}
+
+td, th {
+  border: 2.5px solid #000000;
+  text-align: left;
+  padding: 5px;
+}
+
+
+              </style>
+    </head>
+    <link rel="manifest" href="manifest.json">
+    <body style="background-color: rgb(10, 199, 233);">
+        <h1>Github Profile</h1>
+        <center><input class="w3-input" type="text" id="text_input" ><br>
+        <center><br>
+        <input type="button" class="w3-button w3-black" onclick="gitdata()" value="Get Profile">
+        
+        <div id='git_image'>
+            <img src="" alt="profile image" id="image">
+            <id='para'>
+        <table style="width:100%">
+            
+                                
+
+        <tr>
+            <td>Name </td>
+            <td>Node_id </td>
+            <td>Followers /p></td>
+            <td>Following </p></td>
+            <td>ID </td>
+            <td>Location </td>
+            <td>Avatar URL </td>
+            <td>Subscription URL</td>
+        </tr>
+        <tr>
+            <td><p id='demo'></p></td>
+            <td><p id='demo6'></p></td>
+            <td><p id='demo1'></p></td>
+            <td><p id='demo2'></p></td>
+            <td><p id='demo3'></p></td>
+            <td><p id='demo4'></p></td>
+            <td><p id='demo5'></p></td>
+            <td><p id='demo9'></p></td>
+        </tr>
+
+
+
+        </table>
+
+
+
+        </div>
+    </center>
+    </body>
+<script>
+    function gitdata(){
+
+    var url='https://api.github.com/users/'+document.getElementById('text_input').value;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.avatar_url)
+        var im = document.getElementById("image");
+        im.setAttribute("src",data.avatar_url);
+        
+        
+        document.getElementById("demo").innerHTML = data.login;
+        document.getElementById("demo1").innerHTML = data.followers;
+        document.getElementById("demo2").innerHTML = data.following;
+        document.getElementById("demo3").innerHTML = data.id;
+        document.getElementById("demo4").innerHTML = data.location;
+        document.getElementById("demo5").innerHTML= data.avatar_url;
+        document.getElementById("demo6").innerHTML = data.node_id;
+        document.getElementById("demo7").innerHtml= data.url;
+        document.getElementById("demo8").innerHTML= data.html_url;
+        document.getElementById("demo9").innerHTML= data.subscriptions_url;
+        document.getElementById("demo6").innerHTML = data.node_id;
+        document.getElementById("demo6").innerHTML = data.node_id;
+
+    })
+
+    .catch(function(response){
+        return response.status;
+        console.log(response.status);
+    });;
+    
+}
+</script>
+</html>
